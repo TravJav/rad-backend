@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "flask-application"
+version = "0.1.0"
+description = "application for datascience"
+authors = ["Travis <16505078+TravJav@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "flask_application"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg-binary = "^3.1.17"
+mock = "^5.1.0"
+pytest = "^7.4.4"
+cached-property = "^1.5.2"
+pyjwt = "^2.8.0"
+flask = "2.1.0"
+flask-jwt-extended = "4.3.1"
+escape = "^1.1"
+werkzeug = "2.2.2"
+bcrypt = "^4.1.2"
+psycopg2-binary = "^2.9.9"
+faker = "^22.1.0"
+openapi = "^1.1.0"
+flask-cors = "^4.0.0"
+openai = "^1.11.1"
+
+[tool.poetry.group.dev.dependencies]
+SQLAlchemy = "^2.0.25"
+wrapt-timeout-decorator = "^1.4.0"
+celery = "^5.3.6"
+boto3 = "^1.34.15"
+python-dotenv = "^1.0.0"
+moto = "^4.2.13"
+flake8 = "^7.0.0"
+black = "^23.12.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

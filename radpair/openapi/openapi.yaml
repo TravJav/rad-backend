@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Your API Documentation
+  version: 1.0.0
+  description: Documentation for your API endpoints
+paths:
+  /login:
+    post:
+      summary: Endpoint for user login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                loginTime:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  status:
+                    type: boolean
+                  title:
+                    type: string
+                  token:
+                    type: string
+                  username:
+                    type: string
+                  email:
+                    type: string
+                  user_id:
+                    type: string
+                  profile_picture:
+                    type: string
+  /process-command:
+    post:
+      summary: Process command
+      description: Endpoint to process a command
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: The command to process
+              required:
+                - query
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates whether the request was successful
+                  message:
+                    type: string
+                    description: Message describing the result of the request
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Description of the error

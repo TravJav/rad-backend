@@ -1,0 +1,58 @@
+version: '3.5'
+services:
+  api-radpair-nginx:
+    image: nginx:latest
+    ports:
+      - '127.0.0.1:82:80'
+    links:
+      - api-radpair
+    networks:
+      default:
+        aliases:
+          - api-radpairdev.localhost
+  api-radpair:
+    image: api-radpair:latest
+    command: ./scripts/run-dev.sh
+    environment:
+      - RUNTIME_ENVIRONMENT=DEV
+      - IS_MIDDLEWARE_ENABLED=true
+      - DB_NAME=jefe
+      - DATABASENAME='xxxxxx'
+      - DB_PORT=5432
+      - DB_USER=admin
+      - DB_PASSWORD=postgres
+      - ROUTE_LOGGING=TRUE
+      - OPENAI_API_KEY=
+      - JWT_SECRET=1234567890
+
+    ports:
+      - '127.0.0.1:5000:5000'
+    depends_on:
+      health-pg:
+        condition: service_healthy
+    links:
+      - health-pg
+    volumes:
+      - ./radpair/src/health:/opt/app
+
+  health-pg:
+    image: postgres:9.6
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: healthapi
+
+    volumes:
+      - pg_dv:/var/lib/postgresql/data
+      - ./db/init-scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "health-pg", "-p", "5432", "-U", "postgres", "-d", "api-radpair"]
+      interval: 10s
+      retries: 5
+      start_period: 2s
+
+volumes:
+  pg_dv: ~
+  app_code:  # Named volume for application code
