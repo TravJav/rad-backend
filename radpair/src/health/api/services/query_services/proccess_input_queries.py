@@ -1,9 +1,9 @@
-from radpair.src.health.api.services.query_services.session.session_manager import DatabaseConnection
-from radpair.src.health.api.services.helpers.project_util import ProjectUtilHelper
-import requests
 from openai import OpenAI
 from datetime import datetime
 import logging
+
+from radpair.src.health.api.services.query_services.session.session_manager import DatabaseConnection
+from radpair.src.health.api.services.helpers.project_util import ProjectUtilHelper
 
 class ProcessInputQueries:
 
@@ -13,8 +13,16 @@ class ProcessInputQueries:
         OPEN_API_KEY = _util_helper.get_runtime_env_variable('OPENAI_API_KEY')
         self.client = OpenAI()
 
-    def fetch_openapi(self, question: str):
-         # TODO implement a chat history so context is given to the model
+    def fetch_openapi_response(self, question: str) -> dict:
+        """
+        method that calls the openapi and structures are response object
+
+        Args:
+            question (str): 
+        Returns:
+            dict: response
+        """
+         # TODO implement a chat history so context is given to the model 
         response = self.client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": question}]
@@ -33,4 +41,3 @@ class ProcessInputQueries:
             if choice.message and choice.message.content:
                 return choice.message.content
         return None
-            

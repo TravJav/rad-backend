@@ -5,6 +5,13 @@ authentication_bp = Blueprint("authentication", __name__)
 
 @authentication_bp.route('/login', methods=['POST'])
 def login() -> jsonify:
+    """
+    login that should in the real world radpair MVP backend.. 
+    go to the services/queries and create a DB session object connect to the db
+    and then make sure the hash matches the input password
+    Returns:
+        jsonify: login status
+    """
     try:
         data: str = request.get_json()
         password: str = data.get('password')

@@ -28,6 +28,12 @@ def tables(engine):
 
 @pytest.fixture()
 def dbsession(*args):
+    """
+    creates db session object for testing fixture
+
+    Yields:
+        _type_: session
+    """
     connection = create_engine(TEST_DATABASE).connect()
     transaction = connection.begin()
     session = scoped_session(sessionmaker(bind=connection, future=True))
