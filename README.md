@@ -46,6 +46,11 @@ For authentication you see there is none here because for that to make sense I w
  had to be re-done because people import os and common sys libs into all their classes here and there, it made a lot of import statements that were not really nessisary, we can centralize the calls in the util_helper that way when soemone want sot use a comoon import they call the utilhelper instead of doing something like i.e os. environ['USER']  everywhere and we kick this up a notch by making sure the registered callers are registered and legal, otherwise they raise an error and have to go back and implement it properly
 
 
+ ## Error handling
+  There are try and excepts in here, I would not be confident with this level of try and excepts to be honest unless I had tests to support that confidence most times with the tests I can get specifically the 
+  exceptions that would be raised in a specific scenario but taking a more TDD approach to this.
+
+
 # How to make this better
 
  1. First tests, we should always try to have our tests caught up with our features and created during development perhaps Test driven development or perhaps after - different places have different standars and developers have their own way. In this application I had to sacrifice getting something out the door rather than add tests unfortunatley like I noted above.
@@ -58,3 +63,6 @@ For authentication you see there is none here because for that to make sense I w
     it has scope of history too
 
  5. introduce flake8 and black to standardize the codebase, make it run in the CircleCI so we can be sure   no unformatted code reached the main branch
+
+
+Extras, I attempted to add in things that would be there if this were a real project thinking ahead like circleci config and pull request template
