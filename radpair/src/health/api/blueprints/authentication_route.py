@@ -6,8 +6,8 @@ authentication_bp = Blueprint("authentication", __name__)
 @authentication_bp.route('/login', methods=['POST'])
 def login() -> jsonify:
     try:
-        data = request.get_json()
-        password = data.get('password')
+        data: str = request.get_json()
+        password: str = data.get('password')
         email = data.get('email')
         if email and password:
             return jsonify(

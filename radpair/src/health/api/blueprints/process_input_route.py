@@ -9,7 +9,7 @@ process_input_bp = Blueprint("process_input", __name__)
 def process_query_command() -> jsonify:
     try:
         data = request.get_json()
-        query = data.get('query')
+        query: str = data.get('query')
         logging.info(query)
         response = ProcessInputHandler().process_question(query)
         return response

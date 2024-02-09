@@ -13,7 +13,6 @@ def init_jwt_auth(app):
     jwt.init_app(app)
     return jwt
 
-# Generate JWT token for a given UUID
 def generate_jwt_token(uuid: str):
     jwt_secret = JWT_SECRET
     if jwt_secret:

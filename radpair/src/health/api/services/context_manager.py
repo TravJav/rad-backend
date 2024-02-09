@@ -1,9 +1,3 @@
-# #!/usr/bin/env python
-# -*coding: utf-8 -*-
-# Copyright radpaircare (C) All Rights Reserved
-# Unauthorized copying of this file, via any medium is strictly prohibited
-
-import hashlib
 import inspect
 import logging
 import os
@@ -178,4 +172,4 @@ class ContextManager:
         """
         rnd = random.Random()
         random.Random().seed()  # seed defaults to os.urrandom
-        return str(uuid.UUID(int=rnd.getrandbits(128), version=4))
+        return str(UUID(int=rnd.getrandbits(128), version=4))

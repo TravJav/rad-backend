@@ -9,6 +9,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from health.api.domain.delcarative import Base
 
+# this would have been how I'd create the test db session and surrounding logic
+
 TEST_DATABASE = "postgresql://postgres:password@health-pg:5432/healthpg"
 
 

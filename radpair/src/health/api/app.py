@@ -1,6 +1,3 @@
-# #!/usr/bin/env python
-# -
-
 import logging
 from flask import Blueprint, Flask
 from flask_cors import CORS
