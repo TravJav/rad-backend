@@ -54,3 +54,7 @@ For authentication you see there is none here because for that to make sense I w
 
  3. Create some queries! we have a login route we should use it!
 
+ 4. that db directory contains a db change log in yaml, I would use liquibase to manage my DB changes so
+    it has scope of history too
+
+ 5. introduce flake8 and black to standardize the codebase, make it run in the CircleCI so we can be sure   no unformatted code reached the main branch
