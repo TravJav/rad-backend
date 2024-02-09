@@ -1,6 +1,9 @@
 
 
-## routes can be found here in the openAPI spec  [Created Routes](./radpair/openapi/openapi.yaml)
+## routes with OpenAPI spec
+
+
+routes can be found here in the openAPI spec  [Created Routes](./radpair/openapi/openapi.yaml)
 ## these routes are important to be added to if any other API endpoints are to be created as we can quickly share these and understand 
 ## the routes better
 

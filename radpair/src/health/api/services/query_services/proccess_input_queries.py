@@ -14,14 +14,7 @@ class ProcessInputQueries:
         self.client = OpenAI()
 
     def fetch_openapi(self, question: str):
-        # below is important for the time series
-        # conversation_history = [  
-        #     {"role": "system", "content": "You are a helpful assistant."},
-        #     {"role": "user", "content": question},
-        #     {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-        #     {"role": "user", "content": "Where was it played?"}
-        # ]
-
+         # TODO implement a chat history so context is given to the model
         response = self.client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": question}]
@@ -29,6 +22,7 @@ class ProcessInputQueries:
         logging.error(response)
         response = self.get_completion_text(response)
         if response:
+            
             return{"chatgpt_response": response,
                          "timestamp": datetime.utcnow(), 'query': question}
 
