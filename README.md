@@ -41,6 +41,11 @@ In the queries classes we have raw queries or what would be there, this is subje
 For authentication you see there is none here because for that to make sense I would need spin up a pg database to check the hash but also I would need to worry in the frontend using a Context for axios to store the JWT in which would take some more time, I am mentioning this because neglecting this in the real world is ofcourse in short horrible for many reasons.
 
 
+## Context Manager
+ Ok what is this? I implemented the context manager out of past project experiences, countless P.R's that 
+ had to be re-done because people import os and common sys libs into all their classes here and there, it made a lot of import statements that were not really nessisary, we can centralize the calls in the util_helper that way when soemone want sot use a comoon import they call the utilhelper instead of doing something like i.e os. environ['USER']  everywhere and we kick this up a notch by making sure the registered callers are registered and legal, otherwise they raise an error and have to go back and implement it properly
+
+
 # How to make this better
 
  1. First tests, we should always try to have our tests caught up with our features and created during development perhaps Test driven development or perhaps after - different places have different standars and developers have their own way. In this application I had to sacrifice getting something out the door rather than add tests unfortunatley like I noted above.
